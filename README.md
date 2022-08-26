@@ -1,6 +1,6 @@
 # RobotVsMonster
 
-Main Stories
+<u>Main Stories:</u>
 
 (5 points): As a developer, I want to make at least 7 commits with good, descriptive messages. 
 
@@ -18,8 +18,8 @@ Main Stories
 
 (10 points): As a developer, I want the battle to conclude once either the Robot or the Dinosaur has its health points reduced to zero.
  
-
-Bonus Stories
+<br />
+<u>Bonus Stories:</u>
 
 (5 points): As a developer, I want to choose from a List of 3 possible weapons before a robot makes an attack. 
 

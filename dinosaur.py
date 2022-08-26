@@ -1,7 +1,10 @@
 
 # Purpose: Create "monster" object
-class Monster:
+class Dinosaur:
     def __init__(self, name, attack_power):
         self.name = name #string
+        self.health = 100 #int
         self.attack_power = attack_power #int
-        self.health = health #int
+
+    def attack(self, robot):
+        robot.health -= self.attack_power

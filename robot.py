@@ -4,8 +4,8 @@ from weapons import Weapon
 class Robot:
     def __init__(self, name):
         self.name = name #string
-        self.health = health #int
-        self.active_weapon = Weapon() #object
+        self.health = 100 #int
+        self.active_weapon = Weapon("Blaster Cannon", 10) #object
 
     def attack(self, dinosaur):
-        pass
+        dinosaur.health -= self.active_weapon.attack_power
