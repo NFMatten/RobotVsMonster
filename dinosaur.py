@@ -8,9 +8,9 @@ class Dinosaur:
             name: string
             attack_power: int 
         """
-        self.name = name #string
-        self.health = 100 #int
-        self.attack_power = attack_power #int
+        self.name = name
+        self.health = 100
+        self.attack_power = attack_power
 
     def attack(self, robot):
         """
@@ -27,6 +27,11 @@ class Dinosaur:
         print(self.attack_string(robot))
 
     def attack_string(self, robot):
+        """
+        Purpose: Display string during attack
+        Parameter: 
+            robot: object
+        """
         attack_string = f'''
         Dinosaur {self.name} attacked {robot.name} for {self.attack_power} damage!
         {robot.name} has {robot.health} health remaining!

@@ -17,27 +17,24 @@ class Battlefield:
         print(self.display_winner())
 
     def display_welcome(self):
-        """
-        Purpose: Displays welcome message. (Message below is poorly written via code)
-        # I know below is ugly; haven't researched how to make a better version
-        """
-        message = f'''
-        *******************************
-        * Welcome to the battlefield! *
-        *                             *
-        *     Today's challengers:    *
-        *  \t{self.robot.name} vs. {self.dinosaur.name}\t      *
-        *******************************
-        '''
+        message = f"\nWelcome to the Battlefield! \nToday's challengers:\n{self.robot.name} vs. {self.dinosaur.name}"
         return message
 
     def battle_phase(self):
         """
         Purpose: Conducts battle until one opponent's health reaches zero
         """
-        while self.robot.health > 0 and self.dinosaur.health > 0:
-            self.robot.attack(self.dinosaur)
-            self.dinosaur.attack(self.robot)
+        winner_chosen = False
+        while winner_chosen == False:
+            if self.robot.health != 0:
+                self.robot.attack(self.dinosaur)
+                if self.dinosaur.health == 0:
+                    winner_chosen = True
+
+            if self.dinosaur.health != 0:
+                self.dinosaur.attack(self.robot)
+                if self.robot.health == 0:
+                    winner_chosen = True
         winner = self.determine_winner()
         return winner
 
@@ -46,9 +43,8 @@ class Battlefield:
         Purpose: Determine winner by checking health of each opponent
         """
         if self.robot.health <= 0:
-                winner = self.dinosaur.name
-        elif self.dinosaur.health <= 0:
-            self.dinosaur.health = 0
+            winner = self.dinosaur.name
+        if self.dinosaur.health <= 0:
             winner = self.robot.name
         return winner
 
