@@ -38,13 +38,18 @@ class Battlefield:
         while self.robot.health > 0 and self.dinosaur.health > 0:
             self.robot.attack(self.dinosaur)
             self.dinosaur.attack(self.robot)
+        winner = self.determine_winner()
+        return winner
 
-            # Determine winner (Can be a seperate method)
-            if self.robot.health <= 0:
+    def determine_winner(self):
+        """
+        Purpose: Determine winner by checking health of each opponent
+        """
+        if self.robot.health <= 0:
                 winner = self.dinosaur.name
-            elif self.dinosaur.health <= 0:
-                self.dinosaur.health = 0
-                winner = self.robot.name
+        elif self.dinosaur.health <= 0:
+            self.dinosaur.health = 0
+            winner = self.robot.name
         return winner
 
     def display_winner(self):
