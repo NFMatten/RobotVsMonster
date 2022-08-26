@@ -1,5 +1,6 @@
 from battlefield import Battlefield
 
 # Make battlefield object
-Battlefield.battle_phase()
+first_battle = Battlefield()
+first_battle.run_game()
 

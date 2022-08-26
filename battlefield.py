@@ -1,47 +1,41 @@
 from robot import Robot
 from dinosaur import Dinosaur
-import time
 
 # Purpose: Creates "battlefield" object, should take in "robot" and "monster" objects
 class Battlefield:
     def __init__(self):
-        c3po = Robot("C-3PO")
-        rex = Dinosaur("Rex", 15)
-        pass
-
+        self.robot = Robot("C-3PO")
+        self.dinosaur = Dinosaur("Rex", 15)
+        
     def run_game(self):
-        pass
+        print(self.display_welcome())
+        print(self.display_winner())
 
     def display_welcome(self):
-        pass
+        message = f'''
+        *******************************
+        * Welcome to the battlefield! *
+        *                             *
+        *     Today's challengers:    *
+        *  \t{self.robot.name} vs. {self.dinosaur.name}\t      *
+        *******************************
+        '''
+        return message
 
-    def battle_phase():
-        c3po = Robot("C-3PO")
-        rex = Dinosaur("Rex", 15)
-        pause_duration = 1
-        # Continues fight until one opponent health reaches 0 
-        while c3po.health > 0 and rex.health > 0:
-            time.sleep(pause_duration) # Slows program to see each attack more clearly
+    def battle_phase(self):
+        while self.robot.health > 0 and self.dinosaur.health > 0:
+            self.robot.attack(self.dinosaur)
+            self.dinosaur.attack(self.robot)
 
-            # c3po attacks
-            c3po.attack(rex)
-            print(f"{c3po.name} attacked {rex.name} with a {c3po.active_weapon.name} for {c3po.active_weapon.attack_power}\nRex Health: {rex.health}")
-            # rex attacks
-            rex.attack(c3po)
-            print(f"{rex.name} attacked {c3po.name} for {rex.attack_power}. C-3PO Health: {c3po.health}")
-            # if opponent loses, print winner (To be updated with "display_winner" method)
-            if c3po.health <= 0:
-                c3po.health = 0
-                print("C3PO lost")
-            elif rex.health <= 0:
-                rex.health = 0
-                print("Rex lost")
+            # Determine winner
+            if self.robot.health <= 0:
+                winner = self.dinosaur.name
+            elif self.dinosaur.health <= 0:
+                self.dinosaur.health = 0
+                winner = self.robot.name
+        return winner
 
     # Purpose: Prints who won
     def display_winner(self):
-        c3po = Robot("C-3PO")
-        rex = Dinosaur("Rex", 15)
-        if c3po.health <= 0:
-            print("Rex wins!")
-        elif rex.health <= 0:
-            print("C-3PO wins!")
+        winner = self.battle_phase()
+        return f'{winner} wins!\n'
