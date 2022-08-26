@@ -19,6 +19,7 @@ class Battlefield:
     def display_welcome(self):
         """
         Purpose: Displays welcome message. (Message below is poorly written via code)
+        # I know below is ugly; haven't researched how to make a better version
         """
         message = f'''
         *******************************

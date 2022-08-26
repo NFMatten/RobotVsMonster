@@ -21,5 +21,14 @@ class Robot:
         pause_duration = 1
         time.sleep(pause_duration) # Slows program to see each attack more clearly
         dinosaur.health -= self.active_weapon.attack_power
-        print(f'Robot {self.name} attacked {dinosaur.name} with a {self.active_weapon.name} for {self.active_weapon.attack_power} damage!')
-        print(f'{dinosaur.name} has {dinosaur.health} health remaining!\n')
+        if dinosaur.health < 0:
+            dinosaur.health = 0
+        print(self.attack_string(dinosaur))
+        
+
+    def attack_string(self, dinosaur):
+        attack_string = f'''
+        Robot {self.name} attacked {dinosaur.name} with a {self.active_weapon.name} for {self.active_weapon.attack_power} damage!
+        {dinosaur.name} has {dinosaur.health} health remaining!
+        '''
+        return attack_string

@@ -24,5 +24,11 @@ class Dinosaur:
         robot.health -= self.attack_power
         if robot.health < 0:
             robot.health = 0
-        print(f'Dinosaur {self.name} attacked {robot.name} for {self.attack_power} damage!')
-        print(f'{robot.name} has {robot.health} health remaining!\n')
+        print(self.attack_string(robot))
+
+    def attack_string(self, robot):
+        attack_string = f'''
+        Dinosaur {self.name} attacked {robot.name} for {self.attack_power} damage!
+        {robot.name} has {robot.health} health remaining!
+        '''
+        return attack_string
